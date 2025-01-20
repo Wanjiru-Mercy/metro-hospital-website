@@ -1,20 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 const Hero = () => {
+	const navigate = useNavigate();
 	return (
 		<section className="relative z-10 min-h-[500px] flex items-center">
 			<div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-10">
 				{/* Animated Text */}
 				<div className="text-center md:text-left space-y-8">
 					<motion.h1
-						className="text-6xl font-bold text-primary leading-tight"
+						className="text-6xl font-bold text-white leading-tight"
 						initial={{ opacity: 0, y: -50 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 1, ease: "easeOut" }}
 					>
-						Your Health, Our{" "}
+						Your Partners in{" "}
 						<motion.span
 							className="text-secondary"
 							initial={{ scale: 0.8, opacity: 0 }}
@@ -26,7 +28,7 @@ const Hero = () => {
 								stiffness: 120,
 							}}
 						>
-							Priority
+							Health
 						</motion.span>
 					</motion.h1>
 
@@ -43,7 +45,10 @@ const Hero = () => {
 					{/* Buttons */}
 					<div className="flex justify-center md:justify-start gap-4">
 						{/* Explore Our Care Button */}
-						<button className="flex items-center gap-3 px-8 py-3 bg-primary text-white text-lg font-medium rounded-full hover:bg-secondary hover:text-primary duration-300">
+						<button
+							onClick={() => navigate("/services")}
+							className="flex items-center gap-3 px-8 py-3 bg-primary text-white text-lg font-medium rounded-full hover:bg-secondary hover:text-primary duration-300"
+						>
 							Explore Our Care
 						</button>
 

@@ -55,7 +55,7 @@ const Services = () => {
           Learn more about our {service.toLowerCase()} offerings and how we can
           assist you.
         </p>
-        <button className="px-6 py-2 bg-secondary text-white rounded-full hover:bg-[#a31519] duration-300 self-start">
+        <button className="px-4 py-1.5 bg-[#f28b8c] text-white text-sm font-medium rounded-md hover:bg-[#e57384] duration-300 self-start">
           Read More
         </button>
       </motion.div>
@@ -116,7 +116,7 @@ const Services = () => {
         </motion.div>
       </section>
 
-      {/* Callout Section */}
+      {/* Footer */}
       <Footer />
     </div>
   );
