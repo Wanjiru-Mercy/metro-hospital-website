@@ -7,10 +7,13 @@ import { TiThMenu } from "react-icons/ti";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // Mobile menu state
 
+  // Get the current page URL path
+  const currentPath = window.location.pathname;
+
   return (
     <>
       <nav>
-        <div className="container flex justify-between items-center py-2 relative z-10">
+        <div className="container flex justify-between items-center py-4 relative z-10">
           {/* Logo section */}
           <div className="flex items-center text-lg font-extrabold gap-2">
             <img
@@ -22,19 +25,39 @@ const Navbar = () => {
 
           {/* Menu section */}
           <div className="hidden md:block">
-            <ul className="flex items-center gap-6 text-white font-bold text-lg cursor-pointer">
-              {NavbarMenu.map((item) => {
-                return (
-                  <li key={item.id}>
-                    <a
-                      className="inline-block py-1 px-3 hover:text-white hover:bg-secondary rounded-full duration-200 font-black"
-                      href={item.url}
+            <ul className="flex items-center gap-6 text-white font-bold text-lg">
+              {NavbarMenu.map((item) => (
+                <li key={item.id} className="relative group">
+                  <a
+                    href={item.url}
+                    className={`inline-block py-2 px-4 rounded-full duration-200 font-black ${
+                      currentPath === item.url
+                        ? "text-white bg-secondary"
+                        : "hover:text-white hover:bg-secondary"
+                    }`}
+                  >
+                    {item.title}
+                  </a>
+                  {item.submenu && (
+                    <ul
+                      className="absolute left-0 mt-2 hidden group-hover:flex flex-col bg-white text-black rounded shadow-lg z-20"
+                      onMouseEnter={(e) => e.stopPropagation()}
+                      onMouseLeave={(e) => e.stopPropagation()}
                     >
-                      {item.title}
-                    </a>
-                  </li>
-                );
-              })}
+                      {item.submenu.map((subitem) => (
+                        <li key={subitem.id}>
+                          <a
+                            href={subitem.url}
+                            className="block px-6 py-2 hover:bg-gray-100"
+                          >
+                            {subitem.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -46,10 +69,7 @@ const Navbar = () => {
           </div>
 
           {/* Hamburger menu section */}
-          <div
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
+          <div className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
             <TiThMenu className="text-3xl text-primary" />
           </div>
         </div>

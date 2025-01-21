@@ -8,13 +8,13 @@ const About = () => {
     <div className="overflow-x-hidden font-sans">
       {/* Topbar and Navbar */}
       <Topbar />
-      <Navbar />
-
-      {/* Hero Section */}
       <header
-        className="relative bg-cover bg-center h-[400px] md:h-[500px]"
-        style={{ backgroundImage: `url('/src/assets/about_hero.jpg')` }}
-      >
+				className="relative bg-cover bg-center h-[400px] md:h-[500px]"
+				style={{
+					backgroundImage: `url('/src/assets/about_header.jpg')`,
+				}}
+			>
+				<Navbar />
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>
         <div className="relative container mx-auto h-full flex flex-col justify-center items-center text-center text-white px-4">
           <h1 className="text-4xl md:text-5xl font-bold">About Us</h1>
@@ -117,8 +117,8 @@ const About = () => {
         className="relative bg-cover bg-center py-12"
         style={{ backgroundImage: `url('/src/assets/team_bg.jpg')` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative container mx-auto text-center text-white">
+       
+        {/* <div className="relative container mx-auto text-center text-white">
           <h2 className="text-4xl font-bold">Join Our Family</h2>
           <p className="text-lg mt-4">
             Become part of a community dedicated to better healthcare.
@@ -126,7 +126,7 @@ const About = () => {
           <button className="mt-6 px-8 py-3 bg-secondary text-white font-medium rounded-full hover:bg-[#a31519] duration-300">
             Learn More
           </button>
-        </div>
+        </div> */}
       </section>
 
       {/* Footer */}

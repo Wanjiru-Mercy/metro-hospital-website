@@ -12,7 +12,9 @@ const Footer = () => {
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       {/* Content */}
       <div className="relative container mx-auto h-full flex flex-col justify-center items-center text-center text-white px-4 space-y-3">
-        <h3 className="text-lg md:text-xl font-semibold font-sans">Discover Quality Healthcare</h3>
+        <h3 className="text-lg md:text-xl font-semibold font-sans">
+          Discover Quality Healthcare
+        </h3>
         <p className="text-xs md:text-sm max-w-[500px] leading-snug font-sans">
           Learn more about our facilities, team, and services dedicated to your well-being.
         </p>
@@ -24,12 +26,15 @@ const Footer = () => {
   
     {/* Bottom Half */}
     <div className="bg-primary text-white py-6">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
         {/* Logo and About */}
         <div className="space-y-2">
-          <img src="/metro_logo.png" alt="Logo" className="h-12" />
+          <img src="/metro_logo.png" alt="Logo" className="h-16 bg-white rounded-full" />
           <p className="text-xs leading-snug font-sans">
-            Delivering compassionate and quality healthcare for over 20 years.
+            Delivering compassionate and quality 
+          </p>
+          <p className="text-xs leading-snug font-sans">
+             healthcare for over 25 years.
           </p>
         </div>
   
@@ -52,6 +57,25 @@ const Footer = () => {
           </ul>
         </div>
   
+        {/* Contact Information */}
+        <div>
+          <h3 className="text-base font-semibold mb-2">Contact Us</h3>
+          <ul className="space-y-1 text-xs">
+            <li className="flex items-center">
+              <span className="mr-2 text-secondary">📞</span> 0730 765 000
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2 text-secondary">📞</span> 0709 148 000
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2 text-secondary">📞</span> 0740 024 391
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2 text-secondary">📞</span> 0722 207 665
+            </li>
+          </ul>
+        </div>
+  
         {/* Newsletter Subscription */}
         <div>
           <h3 className="text-base font-semibold mb-2">Subscribe to Our Newsletter</h3>
@@ -61,7 +85,10 @@ const Footer = () => {
               placeholder="Enter your email"
               className="p-2 flex-1 rounded-md text-black text-xs"
             />
-            <button type="submit" className="px-4 py-2 bg-secondary text-white rounded-md hover:bg-[#a31519] duration-300 text-xs">
+            <button
+              type="submit"
+              className="px-4 py-2 bg-secondary text-white rounded-md hover:bg-[#a31519] duration-300 text-xs"
+            >
               Subscribe
             </button>
           </form>
@@ -87,6 +114,7 @@ const Footer = () => {
       </div>
     </div>
   </footer>
+  
   
   
   );
