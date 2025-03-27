@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import cohsasa from "../../assets/cohsasa3.png";
 
 const Hero = () => {
 	const navigate = useNavigate();
@@ -73,7 +74,7 @@ const Hero = () => {
 			{/* COHSASA Accreditation Badge */}
 			<div className="absolute right-8 top-1/2 transform -translate-y-1/2    flex items-center justify-center">
 				<img
-					src="/src/assets/cohsasa3.png"
+					src={cohsasa}
 					alt="COHSASA Accreditation Badge"
 					className="h-24  "
 				/>

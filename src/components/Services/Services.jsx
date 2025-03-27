@@ -4,6 +4,7 @@ import { Card, Button } from "antd";
 import Topbar from "../Topbar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import servicesHeader from "../../assets/services_header.jpg"
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState("Outpatient");
@@ -83,9 +84,11 @@ const Services = () => {
       <Topbar />
       <header
         className="relative bg-cover bg-center h-[400px] md:h-[500px]"
-        style={{
-          backgroundImage: `url('/src/assets/services_header.jpg')`,
-        }}
+       
+        style={{ backgroundImage: `url(${servicesHeader})` }}
+
+
+
       >
         <Navbar />
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>

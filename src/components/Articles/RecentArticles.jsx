@@ -1,5 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import article1 from "../../assets/article1.jpg";
+import article2 from "../../assets/article2.jpg";
+import article3 from "../../assets/article3.jpg";
+
 
 const articles = [
   {
@@ -8,7 +12,7 @@ const articles = [
     description:
       "Explore upcoming trends in healthcare technology and practices shaping patient care.",
     date: "January 10, 2025",
-    image: "/src/assets/article1.jpg",
+    image: article1,
   },
   {
     id: 2,
@@ -16,7 +20,7 @@ const articles = [
     description:
       "Practical advice for maintaining a healthy lifestyle amidst busy schedules.",
     date: "December 20, 2024",
-    image: "/src/assets/article2.jpg",
+    image: article2,
   },
   {
     id: 3,
@@ -24,7 +28,7 @@ const articles = [
     description:
       "Learn about mental health awareness and resources available to you.",
     date: "November 15, 2024",
-    image: "/src/assets/article3.jpg",
+    image: article3,
   },
 ];
 
