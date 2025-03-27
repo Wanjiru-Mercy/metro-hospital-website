@@ -14,7 +14,7 @@ export const NavbarMenu = [
       title: "Services",
       url: "/services",
       submenu: [
-        { id: 1, title: "Staff Portal", url: "/staff-portal" },
+        { id: 1, title: "Staff Portal", url: "http://196.200.29.226:8061/account/login" },
       ],
     },
     {
@@ -22,8 +22,8 @@ export const NavbarMenu = [
       title: "M-Doctor",
       url: "https://m-doc.ecare.africa/login/doctor",
       submenu: [
-        { id: 1, title: "Register", url: "/register" },
-        { id: 2, title: "Log In", url: "/login" },
+        { id: 1, title: "Register", url: "https://m-doc.ecare.africa/medics-portal/medic-registration" },
+        { id: 2, title: "Log In", url: "https://m-doc.ecare.africa/login/doctor" },
       ],
     },
     {

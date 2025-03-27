@@ -7,6 +7,7 @@ import HealthLibrary from "./components/HealthLibrary/HealthLibrary";
 import Amenities from "./components/Amenities/Amenities";
 import Footer from "./components/Footer/Footer";
 import Highlights from "./components/Highlights/Highlights";
+import RecentArticles from "./components/Articles/RecentArticles";
 
 const App = () => {
     return (
@@ -32,7 +33,9 @@ const App = () => {
             <Hero />
             <Highlights />
             <HealthLibrary />
+
             <Amenities />
+            <RecentArticles />
             <Footer />
           </div>
         </div>

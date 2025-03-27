@@ -69,6 +69,15 @@ const Hero = () => {
 					</div>
 				</div>
 			</div>
+
+			{/* COHSASA Accreditation Badge */}
+			<div className="absolute right-8 top-1/2 transform -translate-y-1/2    flex items-center justify-center">
+				<img
+					src="/src/assets/cohsasa3.png"
+					alt="COHSASA Accreditation Badge"
+					className="h-24  "
+				/>
+			</div>
 		</section>
 	);
 };

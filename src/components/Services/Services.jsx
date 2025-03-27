@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Card, Button } from "antd";
 import Topbar from "../Topbar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState("Outpatient");
-  const [visibleCards, setVisibleCards] = useState(6); // Initial number of visible cards
+  const [visibleCards, setVisibleCards] = useState(6);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   const serviceCategories = {
     Outpatient: [
@@ -43,32 +50,36 @@ const Services = () => {
     ],
   };
 
-  const renderCards = (services) =>
-    services.slice(0, visibleCards).map((service, index) => (
-      <motion.div
-        key={index}
-        className="p-6 bg-white shadow-lg rounded-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    setVisibleCards(6);
+  };
+
+  const renderServiceCard = (service, index) => (
+    <motion.div
+      key={`${activeCategory}-${index}`}
+      className="h-full"
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+    >
+      <Card
+        hoverable
+        className="h-full shadow-md hover:shadow-lg transition-all duration-300"
       >
         <h3 className="text-xl font-semibold text-primary mb-4">{service}</h3>
         <p className="text-gray-600 mb-4">
           Learn more about our {service.toLowerCase()} offerings and how we can
           assist you.
         </p>
-        <button className="px-4 py-1.5 text-secondary border border-secondary text-sm font-medium rounded-md hover:bg-secondary hover:text-white duration-300 self-start ">
+        <Button type="default" className="text-secondary border-secondary hover:bg-secondary hover:text-white">
           Read More
-        </button>
-      </motion.div>
-    ));
-
-  const handleLoadMore = () => {
-    setVisibleCards((prev) => prev + 6);
-  };
+        </Button>
+      </Card>
+    </motion.div>
+  );
 
   return (
     <div className="overflow-x-hidden font-sans">
-      {/* Topbar and Navbar */}
       <Topbar />
       <header
         className="relative bg-cover bg-center h-[400px] md:h-[500px]"
@@ -83,55 +94,63 @@ const Services = () => {
             Caring for You, Every Step of the Way
           </h1>
           <p className="text-lg md:text-xl mt-4">
-            Explore our wide range of healthcare services tailored to your
-            needs.
+            Explore our wide range of healthcare services tailored to your needs.
           </p>
-          <button className="mt-6 px-8 py-3 bg-secondary text-white font-medium rounded-full hover:bg-[#a31519] duration-300">
+          <Button
+            type="primary"
+            size="large"
+            className="mt-6 bg-secondary hover:bg-[#a31519] border-none"
+          >
             Contact Us
-          </button>
+          </Button>
         </div>
       </header>
 
-      {/* Tabs Section */}
+      {/* Tabs Section with Button Styling */}
       <section className="container mx-auto py-12 px-4">
-        <div className="flex justify-center space-x-4 mb-8">
+        <div className="flex justify-center flex-wrap gap-4 mb-8">
           {Object.keys(serviceCategories).map((category) => (
-            <button
+            <Button
               key={category}
-              className={`px-6 py-2 rounded-full text-lg font-medium ${
+              shape="round"
+              size="large"
+              className={`px-6 py-2 text-lg font-medium ${
                 activeCategory === category
-                  ? "bg-secondary text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-secondary hover:text-white"
-              } transition duration-300`}
-              onClick={() => {
-                setActiveCategory(category);
-                setVisibleCards(6); // Reset visible cards when switching categories
-              }}
+                  ? "bg-secondary text-white border-secondary"
+                  : "bg-gray-200 text-gray-700 border-gray-200 hover:bg-secondary hover:text-white hover:border-secondary"
+              } transition-all duration-300`}
+              onClick={() => handleCategoryChange(category)}
             >
               {category}
-            </button>
+            </Button>
           ))}
         </div>
 
         {/* Service Cards */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {renderCards(serviceCategories[activeCategory])}
-        </motion.div>
+        {isMounted && (
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            key={activeCategory}
+          >
+            {serviceCategories[activeCategory]
+              ?.slice(0, visibleCards)
+              .map(renderServiceCard)}
+          </motion.div>
+        )}
 
         {/* Load More Button */}
-        {visibleCards < serviceCategories[activeCategory].length && (
+        {visibleCards < (serviceCategories[activeCategory]?.length || 0) && (
           <div className="flex justify-center mt-8">
-            <button
-              onClick={handleLoadMore}
-              className="px-8 py-2 border border-secondary text-secondary font-medium rounded-md hover:bg-secondary hover:text-white duration-300"
+            <Button
+              shape="round"
+              onClick={() => setVisibleCards((prev) => prev + 6)}
+              className="border-secondary text-secondary hover:bg-secondary hover:text-white"
             >
-             See More Services
-            </button>
+              See More Services
+            </Button>
           </div>
         )}
       </section>
@@ -157,7 +176,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
